@@ -98,8 +98,7 @@ function teamInfo(empObj) {
             if (engDetail.moreMember == "y") {
                 empInfoCollect();
             } else {
-                const teamPage = render(team);
-                console.log("Final Team page:", teamPage);
+                renderTeamPage(team);
             }
         })
     } else {
@@ -117,22 +116,14 @@ function teamInfo(empObj) {
         ]).then(function (intDetail) {
             let intObj = new Intern(empObj.name, empObj.id, empObj.email, intDetail.school);
             team.push(intObj);
-            //console.log("New Intern Obj created: ", intObj);
-            //console.log("Inside Intern, team is:", team);
             if (intDetail.moreMember == "y") {
                 empInfoCollect();
             } else {
-                const teamPage = render(team);
-                console.log("Final Team page:", teamPage);
+                renderTeamPage(team);
             }
         })
-    }
-    // }) //end .then of empInfoCollect()
-
-    //3. Render them in overall page
-
-    //4. Render them in individual HTML
-}
+    } // end else
+} // end teamInfo
 
 
 async function renderTeamPage(teamArray) {
