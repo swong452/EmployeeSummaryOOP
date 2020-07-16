@@ -18,7 +18,6 @@ const render = employees => {
     .filter(employee => employee.getRole() === "Intern")
     .map(intern => renderIntern(intern))
   );
-  console.log("html Array:", html);
   return renderMain(html.join(""));
 
 };
@@ -30,7 +29,6 @@ const renderManager = manager => {
   template = replacePlaceholders(template, "email", manager.getEmail());
   template = replacePlaceholders(template, "id", manager.getId());
   template = replacePlaceholders(template, "officeNumber", manager.getOfficeNumber());
-  console.log("Manager template", template);
   return template;
 };
 

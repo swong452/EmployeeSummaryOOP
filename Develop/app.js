@@ -1,7 +1,7 @@
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-const renderHTML = require("./lib/htmlRenderer");
+const render = require("./lib/htmlRenderer");
 const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
@@ -9,31 +9,33 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-const render = require("./lib/htmlRenderer");
 
+// Array that store list of team member.
+// This array object will be passed to htmlRender.js to create another array 
+// of HTML objects of employees.
 let team = [];
 
 
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-// 
+// empInfoCollect prompt 
 function empInfoCollect() {
     inquirer.prompt([
         {
             type: "input",
             name: "name",
-            message: "What is employee Name ?"
+            message: "What is the employee Name ?"
         },
         {
             type: "input",
             name: "id",
-            message: "What is employee ID"
+            message: "What is the employee ID"
         },
         {
             type: "input",
             name: "email",
-            message: "What is employee Email"
+            message: "What is the employee Email"
         },
         {
             type: "input",
@@ -51,10 +53,6 @@ function empInfoCollect() {
 // add each employee object to the array 'team'
 function teamInfo(empObj) {
 
-    //1. Collect All employee info
-    //empInfoCollect()
-    //    .then(function (empObj) {
-
     if (empObj.role == "manager") {
         inquirer.prompt([
             {
@@ -70,8 +68,6 @@ function teamInfo(empObj) {
         ]).then(function (mgrDetail) {
             let mgrObj = new Manager(empObj.name, empObj.id, empObj.email, mgrDetail.managerNum);
             team.push(mgrObj);
-            //console.log("New Manger Obj created: ", mgrObj);
-            //console.log("Inside Manager, team is:", team);
             if (mgrDetail.moreMember == "y") {
                 empInfoCollect();
             } else {
@@ -93,8 +89,7 @@ function teamInfo(empObj) {
         ]).then(function (engDetail) {
             let engObj = new Engineer(empObj.name, empObj.id, empObj.email, engDetail.gitName);
             team.push(engObj);
-            //console.log("New Engineer Obj created: ", engObj);
-            //console.log("Inside Engineer, team is:", team);
+
             if (engDetail.moreMember == "y") {
                 empInfoCollect();
             } else {
@@ -131,7 +126,7 @@ async function renderTeamPage(teamArray) {
 
     try {
         const teamHTML = await render(teamArray);
-        console.log("Inside Async Await, Final Team page:", teamHTML);
+
         fs.writeFileSync("finalTeamPage.html", teamHTML, function (err) {
             if (err) {
                 console.log(err);
@@ -147,9 +142,8 @@ async function renderTeamPage(teamArray) {
 
 }
 
+// Call function empInfoCollect to trigger this info collection process
 empInfoCollect();
-
-
 
 
 
