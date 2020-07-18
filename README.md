@@ -27,7 +27,7 @@ Using Object Oriented method, to allow user to create a team of employees in an 
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-* [Markdown](https://www.markdownguide.org/)
+* [OOP]
 * [nodeJS](https://nodejs.org/en/)
 
 
@@ -37,24 +37,14 @@ This section should list any major frameworks that you built your project using.
 _Summary: Give instructions on setting up this program in your environment,_
 _what software dependencies, and how to get start to run the program_
 
-In this ReadMe generator, just run node index will get you started.
-Follow the prompt to create a README.md
-
-Below is a demo :
-
-
-![Recordit GIF](READMEgenVideo07142020.gif)
-
+To start this program; just run 
+```sh
+node app.js
+```
 
 ### Prerequisites Package 
 
-Need to have node package, and also Inquirer to run this ReadMe generator.
-
-* npm
-
-```sh
-node index.js
-```
+No Special prequisite package.
 
 ### Installation: 
 _Describe how to Install your package_
@@ -63,7 +53,7 @@ In this project, no other installation needed.
 
 ## Usage
 
-Use this README Generator for any future projects that requires a README.md.
+Use this EmployeeSummary to generate any team that involve in any number of EMployee, Manager, Interns
 
 
 
