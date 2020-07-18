@@ -2,13 +2,20 @@
 let Employee = require("./Employee");
 
 class Intern extends Employee {
-    constructor (name, id, email, school) {
+    constructor (name, id, email, school="noSchool") {
         super(name,id,email);
         this.school = school;
     }
 
-    getSchool= () => this.school;
-    getRole = () => "Intern";
+    //getSchool= () => this.school;
+    getSchool() {
+        return this.school
+    }
+
+    //getRole = () => "Intern";
+    getRole () {
+        return "Intern"
+    }
 }
 
 module.exports = Intern;

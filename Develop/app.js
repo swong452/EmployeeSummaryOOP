@@ -127,7 +127,7 @@ async function renderTeamPage(teamArray) {
     try {
         const teamHTML = await render(teamArray);
 
-        fs.writeFileSync("finalTeamPage.html", teamHTML, function (err) {
+        fs.writeFileSync("./output/team.html", teamHTML, function (err) {
             if (err) {
                 console.log(err);
                 console.log("cannot write to file finalTeamPage");
